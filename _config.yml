@@ -36,8 +36,8 @@ social:
 
 # Supabase config (public keys, safe to expose)
 supabase:
-  url: "https://xxxx.supabase.co"
-  anon_key: "eyJ..."
+  url: "https://lawjhifwipybovfceqyv.supabase.co"
+  anon_key: "sb_publishable_XFSI5dxckJWDSwQu2StJpw_Jm61Fosp"
 
 # Strava config (public)
 strava:
