@@ -9,7 +9,7 @@ function injectStyles() {
   style.textContent = `
     #rp-auth-btn {
       position: fixed;
-      bottom: 24px;
+      bottom: 80px;
       right: 24px;
       z-index: 1000;
       background: #FF6B35;
@@ -23,6 +23,7 @@ function injectStyles() {
       box-shadow: 0 4px 14px rgba(0,0,0,.35);
       transition: background .2s;
     }
+    @media (min-width: 768px) { #rp-auth-btn { bottom: 24px; } }
     #rp-auth-btn:hover { background: #e55a25; }
 
     #rp-modal-overlay {
