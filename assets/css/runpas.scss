@@ -1,0 +1,29 @@
+---
+---
+
+// RunPas color overrides for Chirpy theme
+
+:root {
+  --runpas-primary:  #FF6B35;
+  --runpas-strava:   #FC4C02;
+  --runpas-dark:     #1a1a2e;
+}
+
+// Accent: links and highlights use RunPas orange
+a:not(.btn) {
+  color: var(--runpas-primary);
+  &:hover { color: darken(#FF6B35, 10%); }
+}
+
+// Sidebar logo color
+#sidebar .site-title a {
+  color: var(--runpas-primary) !important;
+}
+
+// Strava button
+.btn-strava {
+  background-color: var(--runpas-strava);
+  color: #fff;
+  border: none;
+  &:hover { background-color: darken(#FC4C02, 8%); color: #fff; }
+}
