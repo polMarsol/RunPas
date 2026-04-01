@@ -1,29 +1,397 @@
 ---
 ---
 
-// RunPas color overrides for Chirpy theme
+// ═══════════════════════════════════════════════════════════════
+// RunPas Design System — Sports App Aesthetic
+// ═══════════════════════════════════════════════════════════════
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Barlow+Condensed:wght@500;700;800&display=swap');
+
+// ── Variables ─────────────────────────────────────────────────
 :root {
-  --runpas-primary:  #FF6B35;
-  --runpas-strava:   #FC4C02;
-  --runpas-dark:     #1a1a2e;
+  --rp-orange:       #FF6B35;
+  --rp-orange-dim:   #cc4e1f;
+  --rp-strava:       #FC4C02;
+  --rp-bg:           #0d0d14;
+  --rp-surface:      #13131f;
+  --rp-surface2:     #1a1a2e;
+  --rp-border:       #252538;
+  --rp-text:         #e8e8f0;
+  --rp-muted:        #7070a0;
+  --rp-success:      #22c55e;
+  --rp-font:         'Inter', system-ui, sans-serif;
+  --rp-font-display: 'Barlow Condensed', sans-serif;
 }
 
-// Accent: links and highlights use RunPas orange
-a:not(.btn) {
-  color: var(--runpas-primary);
-  &:hover { color: darken(#FF6B35, 10%); }
+// ── Base ──────────────────────────────────────────────────────
+body {
+  font-family: var(--rp-font) !important;
+  background: var(--rp-bg) !important;
+  color: var(--rp-text) !important;
 }
 
-// Sidebar logo color
-#sidebar .site-title a {
-  color: var(--runpas-primary) !important;
+a { color: var(--rp-orange); transition: color .2s; }
+a:hover { color: var(--rp-orange-dim); text-decoration: none; }
+
+// ── Sidebar ───────────────────────────────────────────────────
+#sidebar {
+  background: var(--rp-surface) !important;
+  border-right: 1px solid var(--rp-border) !important;
+
+  .site-title a {
+    font-family: var(--rp-font-display) !important;
+    font-weight: 800 !important;
+    font-size: 1.7rem !important;
+    letter-spacing: .5px;
+    color: var(--rp-orange) !important;
+    text-transform: uppercase;
+  }
+
+  .site-subtitle {
+    color: var(--rp-muted) !important;
+    font-size: .75rem !important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .nav-link {
+    color: var(--rp-muted) !important;
+    font-weight: 500;
+    font-size: .85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 8px;
+    transition: all .2s;
+
+    &:hover, &.active {
+      color: var(--rp-orange) !important;
+      background: rgba(255,107,53,.08) !important;
+    }
+
+    &.active { font-weight: 700; }
+  }
+
+  .sidebar-bottom {
+    border-top: 1px solid var(--rp-border) !important;
+  }
 }
 
-// Strava button
-.btn-strava {
-  background-color: var(--runpas-strava);
-  color: #fff;
+// ── Topbar / Navbar ───────────────────────────────────────────
+#topbar-wrapper, .topbar {
+  background: rgba(13,13,20,.85) !important;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rp-border) !important;
+}
+
+// ── Main content area ─────────────────────────────────────────
+#main-wrapper, main {
+  background: var(--rp-bg) !important;
+}
+
+// ── Hero (home page) ──────────────────────────────────────────
+.rp-hero {
+  padding: 60px 0 40px;
+  text-align: center;
+
+  .rp-hero__eyebrow {
+    display: inline-block;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--rp-orange);
+    border: 1px solid rgba(255,107,53,.3);
+    border-radius: 999px;
+    padding: 4px 14px;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-family: var(--rp-font-display) !important;
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 900;
+    line-height: .95;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    color: var(--rp-text);
+    margin-bottom: 16px;
+
+    span { color: var(--rp-orange); }
+  }
+
+  p {
+    color: var(--rp-muted);
+    font-size: 1rem;
+    max-width: 480px;
+    margin: 0 auto 32px;
+    line-height: 1.7;
+  }
+
+  .rp-hero__actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+// ── Buttons ───────────────────────────────────────────────────
+.rp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: .9rem;
+  font-weight: 600;
+  cursor: pointer;
   border: none;
-  &:hover { background-color: darken(#FC4C02, 8%); color: #fff; }
+  text-decoration: none !important;
+  transition: all .2s;
+
+  &--primary {
+    background: var(--rp-orange);
+    color: #fff !important;
+    &:hover { background: var(--rp-orange-dim); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(255,107,53,.3); }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: var(--rp-text) !important;
+    border: 1px solid var(--rp-border);
+    &:hover { border-color: var(--rp-orange); color: var(--rp-orange) !important; }
+  }
+
+  &--strava {
+    background: var(--rp-strava);
+    color: #fff !important;
+    &:hover { background: #d43d00; }
+  }
 }
+
+// ── Stat cards ────────────────────────────────────────────────
+.rp-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  margin: 40px 0;
+}
+
+.rp-stat {
+  background: var(--rp-surface);
+  border: 1px solid var(--rp-border);
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+  transition: border-color .2s;
+
+  &:hover { border-color: rgba(255,107,53,.4); }
+
+  &__value {
+    font-family: var(--rp-font-display);
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--rp-orange);
+    line-height: 1;
+  }
+
+  &__label {
+    font-size: .7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--rp-muted);
+    margin-top: 6px;
+  }
+}
+
+// ── Section headers ───────────────────────────────────────────
+.rp-section-title {
+  font-family: var(--rp-font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: var(--rp-text);
+  margin-bottom: 20px;
+
+  span { color: var(--rp-orange); }
+}
+
+// ── Race card ─────────────────────────────────────────────────
+.rp-race-card {
+  background: var(--rp-surface);
+  border: 1px solid var(--rp-border);
+  border-radius: 14px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: all .2s;
+  margin-bottom: 12px;
+
+  &:hover {
+    border-color: rgba(255,107,53,.35);
+    transform: translateX(4px);
+  }
+
+  &__rank {
+    font-family: var(--rp-font-display);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--rp-muted);
+    min-width: 36px;
+    &.top1 { color: #FFD700; }
+    &.top2 { color: #C0C0C0; }
+    &.top3 { color: #CD7F32; }
+  }
+
+  &__info { flex: 1; }
+
+  &__name {
+    font-weight: 700;
+    font-size: .95rem;
+    color: var(--rp-text);
+  }
+
+  &__meta {
+    font-size: .78rem;
+    color: var(--rp-muted);
+    margin-top: 2px;
+  }
+
+  &__time {
+    font-family: var(--rp-font-display);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--rp-orange);
+    letter-spacing: .5px;
+  }
+
+  &__pace {
+    font-size: .72rem;
+    color: var(--rp-muted);
+    text-align: right;
+  }
+}
+
+// ── Category pills ────────────────────────────────────────────
+.rp-categories {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.rp-pill {
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: .78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid var(--rp-border);
+  color: var(--rp-muted);
+  background: var(--rp-surface);
+  cursor: pointer;
+  transition: all .2s;
+
+  &:hover, &.active {
+    background: var(--rp-orange);
+    border-color: var(--rp-orange);
+    color: #fff;
+  }
+}
+
+// ── Form ──────────────────────────────────────────────────────
+.rp-form {
+  background: var(--rp-surface);
+  border: 1px solid var(--rp-border);
+  border-radius: 16px;
+  padding: 28px;
+
+  .rp-form__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+
+    @media (max-width: 600px) { grid-template-columns: 1fr; }
+  }
+
+  .rp-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    label {
+      font-size: .75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--rp-muted);
+    }
+
+    input, select, textarea {
+      background: var(--rp-bg);
+      border: 1px solid var(--rp-border);
+      border-radius: 10px;
+      padding: 10px 14px;
+      color: var(--rp-text);
+      font-family: var(--rp-font);
+      font-size: .9rem;
+      transition: border-color .2s;
+
+      &:focus {
+        outline: none;
+        border-color: var(--rp-orange);
+        box-shadow: 0 0 0 3px rgba(255,107,53,.12);
+      }
+    }
+  }
+}
+
+// ── Empty state ───────────────────────────────────────────────
+.rp-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--rp-muted);
+
+  .rp-empty__icon { font-size: 3rem; margin-bottom: 12px; opacity: .4; }
+  .rp-empty__title { font-size: 1.1rem; font-weight: 600; color: var(--rp-text); margin-bottom: 6px; }
+  p { font-size: .88rem; }
+}
+
+// ── Posts / Blog ──────────────────────────────────────────────
+.post-preview, article.post {
+  background: var(--rp-surface) !important;
+  border: 1px solid var(--rp-border) !important;
+  border-radius: 14px !important;
+  padding: 20px !important;
+  margin-bottom: 16px !important;
+  transition: border-color .2s;
+
+  &:hover { border-color: rgba(255,107,53,.35) !important; }
+}
+
+.post-title a { color: var(--rp-text) !important; font-weight: 700 !important; }
+.post-meta { color: var(--rp-muted) !important; font-size: .8rem !important; }
+
+// ── Code blocks ───────────────────────────────────────────────
+pre, code { background: var(--rp-surface2) !important; border: 1px solid var(--rp-border) !important; }
+
+// ── Scrollbar ─────────────────────────────────────────────────
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--rp-bg); }
+::-webkit-scrollbar-thumb { background: var(--rp-border); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--rp-muted); }
+
+// ── Loading spinner ───────────────────────────────────────────
+.rp-spinner {
+  width: 32px; height: 32px;
+  border: 3px solid var(--rp-border);
+  border-top-color: var(--rp-orange);
+  border-radius: 50%;
+  animation: rp-spin .7s linear infinite;
+  margin: 40px auto;
+}
+@keyframes rp-spin { to { transform: rotate(360deg); } }
